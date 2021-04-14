@@ -10,7 +10,7 @@
  This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into .NET 5 from the .NET Framework
 
 
- Changes:
+ #Changes:
  
  Removed easy to crack comment and replaced by not protected comment.
  
