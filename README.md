@@ -1,9 +1,7 @@
 
-# SimpleLoader by Wilson, 
-## https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] 
+# SimpleLoader by Wilson, ## https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] 
 
-# Ported and revamped by core-hacked, 
-## https://github.com/core-hacked/SimpleLoader-dotNet5-Port  
+# Ported and revamped by core-hacked, ## https://github.com/core-hacked/SimpleLoader-dotNet5-Port  
 
  Keep in mind this does not have any encryption or protection, It can be cracked by people. 
 
