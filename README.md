@@ -1,9 +1,10 @@
 
-# ///=================================================================================================\\\
-# \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-# ///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
-# \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
-# ///=================================================================================================\\\
+
+# SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] 
+# Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port  
+
+ Keep in mind this does not have any encryption or protection, It can be cracked by people. 
+
 
 
  This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into the new .NET 5 from the .NET Framework
