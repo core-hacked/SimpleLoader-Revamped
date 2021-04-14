@@ -7,7 +7,7 @@
 
 
 
- This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into the new .NET 5 from the .NET Framework
+ This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into .NET 5 from the .NET Framework
 
 
 Changes:
