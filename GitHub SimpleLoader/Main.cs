@@ -104,7 +104,7 @@ namespace SimpleLoader_dotNet5_by_core
                 //If it does not get a response (This means the user is offline or duckduckgo is down for some reason) it will not Exit the application, you can change this by removing "//" before the Application.Exit();
                 StatusLbl.ForeColor = Color.Red;
                 StatusLbl.Text = ("You are offline");
-                Application.Exit();
+                //Application.Exit(); // you can comment/uncomment this to close the app if it returns that you are offline.
             }
         }
 
