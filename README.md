@@ -1,4 +1,4 @@
-![banner](.net loader image git.png)
+![banner](https://github.com/core-hacked/SimpleLoader-dotNet5-Port/blob/master/.net%20loader%20image%20git.png)
 # [SimpleLoader by Wilson](https://github.com/WilsonPublic/SimpleLoader), [ported revamped by core-hacked](https://github.com/core-hacked/SimpleLoader-dotNet5-Port).
 
  Keep in mind this does not have any encryption or protection, It can be cracked by people. 
