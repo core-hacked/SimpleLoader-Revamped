@@ -108,7 +108,7 @@ namespace SimpleLoader_dotNet5_by_core
             }
         }
 
-        async void button2_Click(object sender, EventArgs e) // the async void tells the form that we will use a delay of sorts to not do tasks to fast.
+        async void button2_Click(object sender, EventArgs e) // the async void tells the form that we will use a delay of sorts to not do tasks too fast.
         {
             Clipboard.SetText(HWID);
             CopyHWIDbtn.ForeColor = Color.Green; // this will change the color of the text on the copy button, you can comment this out or use another color.

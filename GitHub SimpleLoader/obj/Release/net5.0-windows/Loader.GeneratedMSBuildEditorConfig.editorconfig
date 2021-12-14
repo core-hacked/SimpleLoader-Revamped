@@ -6,3 +6,5 @@ build_property.ProjectTypeGuids =
 build_property.PublishSingleFile = 
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
+build_property.RootNamespace = SimpleLoader_dotNet5_by_core
+build_property.ProjectDir = D:\projects\Github SimpleLoader .NET 5\SimpleLoader-dotNet5-Port\SimpleLoader-dotNet5-Port\GitHub SimpleLoader\
