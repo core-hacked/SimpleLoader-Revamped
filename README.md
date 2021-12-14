@@ -1,9 +1,5 @@
-
-# SimpleLoader by Wilson, 
-### https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] 
-
-# Ported and revamped by core-hacked, 
-### https://github.com/core-hacked/SimpleLoader-dotNet5-Port  
+![banner](https://github.com/core-hacked/SimpleLoader-dotNet5-Port/blob/master/.net%20loader%20image%20git.png)
+# [SimpleLoader by Wilson](https://github.com/WilsonPublic/SimpleLoader), [ported revamped by core-hacked](https://github.com/core-hacked/SimpleLoader-dotNet5-Port).
 
  Keep in mind this does not have any encryption or protection, It can be cracked by people. 
 
@@ -11,33 +7,33 @@
 
 
  ## Changes:
- 
- Added comments to make it beginner friendly
+ ```
+ - Added comments to make it beginner friendly
 
- Added a Name variable to store the name so the labels and form name can be updated easily
+ - Added a Name variable to store the name so the labels and form name can be updated easily
  
- Changed Formatting
+ - Changed Formatting
  
- Removed easy to crack comment and replaced by not protected comment.
+ - Removed easy to crack comment and replaced by not protected comment.
  
- Changed how comments are expressed.
+ - Changed how comments are expressed.
  
- Changed how things are named.
+ - Changed how things are named.
  
- Changed checkonline() to be updated live with a timer.
+ - Changed checkonline() to be updated live with a timer.
  
- Changed checkonline() URL to be https://duckduckgo.com/ instead of https://google.com/ due to google denying requests after too many have been made.
+ - Changed checkonline() URL to be https://duckduckgo.com/ instead of https://google.com/ due to google denying requests after too many have been made.
  
- Changed the design to be a DarkUI + Changed Icon, added Panel at the top, changed Form Border to none, made form movable when dragging panel, Added minimize and Close buttons to the panel. Added PictureBox and Text to the Panel.
+ - Changed the design to be a DarkUI + Changed Icon, added Panel at the top, changed Form Border to none, made form movable when dragging panel, Added minimize and Close buttons to the panel. Added PictureBox and Text to the Panel.
  
  Ported to .NET 5 from .NET Framework
-
+```
  ## Dependancies:
+ ```
+ - .NET 5 SDK
  
- .NET 5 
+ - Visual Studio Version that supports .NET 5
  
- Latest Visual Studio 2019 Version that supports .NET 5
- 
- Administrator access on your machine.
-
+ - Administrator access on your machine.
+```
  
