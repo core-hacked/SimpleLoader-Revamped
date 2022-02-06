@@ -3,7 +3,7 @@
 
  Keep in mind this does not have any encryption or protection, It can be cracked by people. 
 
- This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into .NET 5 from the .NET Framework
+ This is a port of WilsonPublic's Github SimpleLoader made in C#. This ports SimpleLoader into .NET 6 WPF from WinForms .NET5
 
 
  ## Changes:
@@ -30,9 +30,9 @@
 ```
  ## Dependancies:
  ```
- - .NET 5 SDK
+ - .NET 6 SDK
  
- - Visual Studio Version that supports .NET 5
+ - Visual Studio Version that supports .NET 6
  
  - Administrator access on your machine.
 ```
