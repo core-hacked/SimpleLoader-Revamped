@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port/tree/master-dotnet6-wpf   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -79,7 +79,7 @@ namespace ManualMapInjection.Injection.Win32
         public static extern IntPtr VirtualAlloc(IntPtr lpAddress, UIntPtr dwSize, AllocationType flAllocationType, MemoryProtection flProtect);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        public static extern IntPtr OpenProcess(ProcessAccessFlags processAccess, bool bInheritHandle,int processId);
+        public static extern IntPtr OpenProcess(ProcessAccessFlags processAccess, bool bInheritHandle, int processId);
 
         [DllImport("kernel32.dll", SetLastError = true)]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]

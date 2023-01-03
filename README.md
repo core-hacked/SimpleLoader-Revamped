@@ -1,15 +1,17 @@
-![banner](https://github.com/core-hacked/SimpleLoader-Revamped/blob/master/.net%20loader%20image%20git.png)
+> This branch is unfinished - the groundwork is being layed out. Please go to the master branch (master-dotnet5-winforms) for a working version of SimpleLoader-Revamped.
+
+![banner](https://raw.githubusercontent.com/core-hacked/SimpleLoader-Revamped/master-dotnet-7-wpf/banner.png)
 
 # [SimpleLoader by Wilson](https://github.com/WilsonPublic/SimpleLoader), [SimpleLoader Revamped by core-hacked](https://github.com/core-hacked/SimpleLoader-Revamped).
 
-This is a port of WilsonPublic's Github SimpleLoader which was made with .NET Framework WindowsForms (C#) into .NET 6 WPF (Windows Presentation Framework). It includes no protection mechanisms, obfuscation or encryption. It can be cracked by people with enough knowledge, although it is significantly harder to crack than the original SimpleLoader due to the fact that it is now a WPF application using .NET 6.
+This is a port of WilsonPublic's Github SimpleLoader which was made with .NET Framework WindowsForms (C#) into .NET 7. It includes no protection mechanisms, obfuscation or encryption. It can be cracked by people with enough knowledge, although it is significantly harder to crack than the original SimpleLoader due to the fact that it is now a WPF (Windows Presentation Framework) application using .NET 7.
 
 ## Changes:
 
 ```diff
 + Added comments to make it beginner friendly
 
-- Removed previous name variable to store the name so the labels and form name can be updated easily
+- Remove previous name variable that stores the name for the labels and form name (unnecessary)
 
 + Changed Formatting
 
@@ -28,13 +30,13 @@ This is a port of WilsonPublic's Github SimpleLoader which was made with .NET Fr
 + Made form movable when dragging panel
 + Added minimize and Close buttons to the panel.
 + Added PictureBox and Text to the Panel.
-+ Ported to .NET 6 WPF from .NET 5 WinForms
++ Ported to .NET 7 WPF from .NET 5 Winforms
 ```
 
 ## Dependancies:
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
-- [Visual Studio Version that supports .NET 6](https://visualstudio.microsoft.com/)
+- [Visual Studio Version that supports .NET 7](https://visualstudio.microsoft.com/)
 
 - [Administrator access on your machine.](https://support.microsoft.com/en-us/windows/how-do-i-log-on-as-an-administrator-63267a09-9926-991a-1c77-d203160c8563#:~:text=An%20administrator%20is%20someone%20who,changes%20to%20other%20user%20accounts.)

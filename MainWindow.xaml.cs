@@ -1,7 +1,7 @@
 ﻿/*
 ///===================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader]   ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port/tree/master-dotnet6-wpf \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.      ///
 ///===================================================================================================\\\
 */
@@ -31,7 +31,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 
-namespace SimpleLoader_dotNet6_Port_WPF
+namespace SimpleLoader_dotNet7_Port_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

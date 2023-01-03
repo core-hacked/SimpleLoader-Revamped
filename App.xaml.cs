@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace SimpleLoader_dotNet6_Port_WPF
+namespace SimpleLoader_dotNet7_Port_WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
