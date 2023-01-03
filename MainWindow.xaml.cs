@@ -31,7 +31,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net.Http;
 
-namespace SimpleLoader_dotNet5_Port_WPF
+namespace SimpleLoader_dotNet6_Port_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

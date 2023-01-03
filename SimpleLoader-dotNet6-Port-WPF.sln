@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLoader-dotNet5-Port-WPF", "SimpleLoader-dotNet5-Port-WPF.csproj", "{B0C887CC-07C5-4BFF-AEBA-15D2EFD12A4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLoader-dotNet6-Port-WPF", "SimpleLoader-dotNet6-Port-WPF.csproj", "{B0C887CC-07C5-4BFF-AEBA-15D2EFD12A4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
