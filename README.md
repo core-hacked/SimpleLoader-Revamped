@@ -1,6 +1,6 @@
 > This branch is unfinished - the groundwork is being layed out. Please go to the master branch (master-dotnet5-winforms) for a working version of SimpleLoader-Revamped.
 
-![banner](https://raw.githubusercontent.com/core-hacked/SimpleLoader-Revamped/master-dotnet-7-wpf/banner.png)
+![banner](https://raw.githubusercontent.com/core-hacked/SimpleLoader-Revamped/master-dotnet7-wpf/banner.png)
 
 # [SimpleLoader by Wilson](https://github.com/WilsonPublic/SimpleLoader), [SimpleLoader Revamped by core-hacked](https://github.com/core-hacked/SimpleLoader-Revamped).
 
