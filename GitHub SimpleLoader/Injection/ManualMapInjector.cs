@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -40,7 +40,7 @@ namespace ManualMapInjection.Injection
 
         private PIMAGE_DOS_HEADER GetDosHeader(IntPtr address)
         {
-            var imageDosHeader = (PIMAGE_DOS_HEADER) address;
+            var imageDosHeader = (PIMAGE_DOS_HEADER)address;
 
             if (!imageDosHeader.Value.isValid)
             {
@@ -59,7 +59,7 @@ namespace ManualMapInjection.Injection
                 return null;
             }
 
-            var imageNtHeaders = (PIMAGE_NT_HEADERS32) (address + imageDosHeader.Value.e_lfanew);
+            var imageNtHeaders = (PIMAGE_NT_HEADERS32)(address + imageDosHeader.Value.e_lfanew);
 
             if (!imageNtHeaders.Value.isValid)
             {
@@ -108,7 +108,7 @@ namespace ManualMapInjection.Injection
                 return false;
             }
 
-            var lpAddress = RemoteAllocateMemory((uint) dependency.Length);
+            var lpAddress = RemoteAllocateMemory((uint)dependency.Length);
 
             if (lpAddress == IntPtr.Zero)
             {
@@ -150,8 +150,8 @@ namespace ManualMapInjection.Injection
         {
             var dwModuleHandle = IntPtr.Zero;
             var hHeap = Imports.GetProcessHeap();
-            var dwSize = (uint) Marshal.SizeOf(typeof(PROCESS_BASIC_INFORMATION));
-            var pbi = (PPROCESS_BASIC_INFORMATION) Imports.HeapAlloc(hHeap, /*HEAP_ZERO_MEMORY*/ 0x8, new UIntPtr(dwSize));
+            var dwSize = (uint)Marshal.SizeOf(typeof(PROCESS_BASIC_INFORMATION));
+            var pbi = (PPROCESS_BASIC_INFORMATION)Imports.HeapAlloc(hHeap, /*HEAP_ZERO_MEMORY*/ 0x8, new UIntPtr(dwSize));
 
             uint dwSizeNeeded;
             var dwStatus = Imports.NtQueryInformationProcess(_hProcess, /*ProcessBasicInformation*/ 0, pbi.Address, dwSize, out dwSizeNeeded);
@@ -163,7 +163,7 @@ namespace ManualMapInjection.Injection
                     Imports.HeapFree(hHeap, 0, pbi.Address);
                 }
 
-                pbi = (PPROCESS_BASIC_INFORMATION) Imports.HeapAlloc(hHeap, /*HEAP_ZERO_MEMORY*/ 0x8, new UIntPtr(dwSize));
+                pbi = (PPROCESS_BASIC_INFORMATION)Imports.HeapAlloc(hHeap, /*HEAP_ZERO_MEMORY*/ 0x8, new UIntPtr(dwSize));
 
                 if (pbi == null)
                 {
@@ -183,7 +183,7 @@ namespace ManualMapInjection.Injection
                     UIntPtr dwBytesRead;
                     uint pebLdrAddress;
 
-                    if (Imports.ReadProcessMemory(_hProcess, pbi.Value.PebBaseAddress + 12 /*peb.Ldr*/, out pebLdrAddress, out dwBytesRead) )
+                    if (Imports.ReadProcessMemory(_hProcess, pbi.Value.PebBaseAddress + 12 /*peb.Ldr*/, out pebLdrAddress, out dwBytesRead))
                     {
                         var pLdrListHead = pebLdrAddress + /*InLoadOrderModuleList*/ 0x0C;
                         var pLdrCurrentNode = pebLdrAddress + /*InLoadOrderModuleList*/ 0x0C;
@@ -217,7 +217,7 @@ namespace ManualMapInjection.Injection
 
                             if (dllBase != 0 && sizeOfImage != 0)
                             {
-                                if(string.Equals(strBaseDllName, module, StringComparison.OrdinalIgnoreCase))
+                                if (string.Equals(strBaseDllName, module, StringComparison.OrdinalIgnoreCase))
                                 {
                                     dwModuleHandle = new IntPtr(dllBase);
                                     break;
@@ -262,12 +262,12 @@ namespace ManualMapInjection.Injection
             if (expBase > 0)
             {
                 var expSize = hdrNt32.OptionalHeader.ExportTable.Size;
-                var expData = (PIMAGE_EXPORT_DIRECTORY) AllocateMemory(expSize);
-                Imports.ReadProcessMemory(_hProcess, moduleBase + (int) expBase, expData.Address, (int) expSize, out dwRead);
+                var expData = (PIMAGE_EXPORT_DIRECTORY)AllocateMemory(expSize);
+                Imports.ReadProcessMemory(_hProcess, moduleBase + (int)expBase, expData.Address, (int)expSize, out dwRead);
 
-                var pAddressOfOrds = (PWORD) (expData.Address + (int) expData.Value.AddressOfNameOrdinals - (int) expBase);
-                var pAddressOfNames = (PDWORD) (expData.Address + (int) expData.Value.AddressOfNames - (int) expBase);
-                var pAddressOfFuncs = (PDWORD) (expData.Address + (int) expData.Value.AddressOfFunctions - (int) expBase);
+                var pAddressOfOrds = (PWORD)(expData.Address + (int)expData.Value.AddressOfNameOrdinals - (int)expBase);
+                var pAddressOfNames = (PDWORD)(expData.Address + (int)expData.Value.AddressOfNames - (int)expBase);
+                var pAddressOfFuncs = (PDWORD)(expData.Address + (int)expData.Value.AddressOfFunctions - (int)expBase);
 
 
                 for (uint i = 0; i < expData.Value.NumberOfFunctions; i++)
@@ -277,11 +277,11 @@ namespace ManualMapInjection.Injection
 
                     if (new PDWORD(procName.Address).Value <= 0xFFFF)
                     {
-                        ordIndex = unchecked((ushort) i);
+                        ordIndex = unchecked((ushort)i);
                     }
                     else if (new PDWORD(procName.Address).Value > 0xFFFF && i < expData.Value.NumberOfNames)
                     {
-                        pName = (PCHAR) new IntPtr(pAddressOfNames[i] + expData.Address.ToInt32() - expBase);
+                        pName = (PCHAR)new IntPtr(pAddressOfNames[i] + expData.Address.ToInt32() - expBase);
                         ordIndex = pAddressOfOrds[i];
                     }
                     else
@@ -291,9 +291,9 @@ namespace ManualMapInjection.Injection
 
                     if ((new PDWORD(procName.Address).Value <= 0xFFFF && new PDWORD(procName.Address).Value == ordIndex + expData.Value.Base) || (new PDWORD(procName.Address).Value > 0xFFFF && pName.ToString() == procName.ToString()))
                     {
-                        pFunc = moduleBase + (int) pAddressOfFuncs[ordIndex];
+                        pFunc = moduleBase + (int)pAddressOfFuncs[ordIndex];
 
-                        if (pFunc.ToInt64() >= (moduleBase + (int) expBase).ToInt64() && pFunc.ToInt64() <= (moduleBase + (int) expBase + (int) expSize).ToInt64())
+                        if (pFunc.ToInt64() >= (moduleBase + (int)expBase).ToInt64() && pFunc.ToInt64() <= (moduleBase + (int)expBase + (int)expSize).ToInt64())
                         {
                             var forwardStr = new byte[255];
                             Imports.ReadProcessMemory(_hProcess, pFunc, forwardStr, out dwRead);
@@ -342,13 +342,13 @@ namespace ManualMapInjection.Injection
 
             if (imageNtHeaders.Value.OptionalHeader.ImportTable.Size > 0)
             {
-                var imageImportDescriptor = (PIMAGE_IMPORT_DESCRIPTOR) RvaToPointer(imageNtHeaders.Value.OptionalHeader.ImportTable.VirtualAddress, baseAddress);
+                var imageImportDescriptor = (PIMAGE_IMPORT_DESCRIPTOR)RvaToPointer(imageNtHeaders.Value.OptionalHeader.ImportTable.VirtualAddress, baseAddress);
 
                 if (imageImportDescriptor != null)
                 {
                     for (; imageImportDescriptor.Value.Name > 0; imageImportDescriptor++)
                     {
-                        var moduleName = (PCHAR) RvaToPointer(imageImportDescriptor.Value.Name, baseAddress);
+                        var moduleName = (PCHAR)RvaToPointer(imageImportDescriptor.Value.Name, baseAddress);
                         if (moduleName == null)
                         {
                             continue;
@@ -365,7 +365,7 @@ namespace ManualMapInjection.Injection
                             // todo manual map injection for dependency
                             InjectDependency(moduleName.ToString());
                             moduleBase = GetRemoteModuleHandleA(moduleName.ToString());
-                           
+
                             if (moduleBase == IntPtr.Zero)
                             {
 #if DEBUG
@@ -381,13 +381,13 @@ namespace ManualMapInjection.Injection
 
                         if (imageImportDescriptor.Value.OriginalFirstThunk > 0)
                         {
-                            imageThunkData = (PIMAGE_THUNK_DATA) RvaToPointer(imageImportDescriptor.Value.OriginalFirstThunk, baseAddress);
-                            imageFuncData = (PIMAGE_THUNK_DATA) RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageThunkData = (PIMAGE_THUNK_DATA)RvaToPointer(imageImportDescriptor.Value.OriginalFirstThunk, baseAddress);
+                            imageFuncData = (PIMAGE_THUNK_DATA)RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
                         }
                         else
                         {
-                            imageThunkData = (PIMAGE_THUNK_DATA) RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
-                            imageFuncData = (PIMAGE_THUNK_DATA) RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageThunkData = (PIMAGE_THUNK_DATA)RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageFuncData = (PIMAGE_THUNK_DATA)RvaToPointer(imageImportDescriptor.Value.FirstThunk, baseAddress);
                         }
 
                         for (; imageThunkData.Value.AddressOfData > 0; imageThunkData++, imageFuncData++)
@@ -397,7 +397,7 @@ namespace ManualMapInjection.Injection
 
                             if (bSnapByOrdinal)
                             {
-                                var ordinal = (short) (imageThunkData.Value.Ordinal & 0xffff);
+                                var ordinal = (short)(imageThunkData.Value.Ordinal & 0xffff);
                                 functionAddress = GetDependencyProcAddressA(moduleBase, new PCHAR(ordinal));
 
                                 if (functionAddress == IntPtr.Zero)
@@ -407,8 +407,8 @@ namespace ManualMapInjection.Injection
                             }
                             else
                             {
-                                var imageImportByName = (PIMAGE_IMPORT_BY_NAME) RvaToPointer(imageFuncData.Value.Ordinal, baseAddress);
-                                var mameOfImport = (PCHAR) imageImportByName.Address + /*imageImportByName->Name*/ 2;
+                                var imageImportByName = (PIMAGE_IMPORT_BY_NAME)RvaToPointer(imageFuncData.Value.Ordinal, baseAddress);
+                                var mameOfImport = (PCHAR)imageImportByName.Address + /*imageImportByName->Name*/ 2;
                                 functionAddress = GetDependencyProcAddressA(moduleBase, mameOfImport);
                             }
 
@@ -450,7 +450,7 @@ namespace ManualMapInjection.Injection
             if (imageNtHeaders.Value.OptionalHeader.DelayImportDescriptor.Size > 0)
             {
                 var imageDelayedImportDescriptor =
-                    (PIMAGE_IMPORT_DESCRIPTOR) RvaToPointer(imageNtHeaders.Value.OptionalHeader.DelayImportDescriptor.VirtualAddress, baseAddress);
+                    (PIMAGE_IMPORT_DESCRIPTOR)RvaToPointer(imageNtHeaders.Value.OptionalHeader.DelayImportDescriptor.VirtualAddress, baseAddress);
 
                 if (imageDelayedImportDescriptor != null)
                 {
@@ -484,13 +484,13 @@ namespace ManualMapInjection.Injection
 
                         if (imageDelayedImportDescriptor.Value.OriginalFirstThunk > 0)
                         {
-                            imageThunkData = (PIMAGE_THUNK_DATA) RvaToPointer(imageDelayedImportDescriptor.Value.OriginalFirstThunk, baseAddress);
-                            imageFuncData = (PIMAGE_THUNK_DATA) RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageThunkData = (PIMAGE_THUNK_DATA)RvaToPointer(imageDelayedImportDescriptor.Value.OriginalFirstThunk, baseAddress);
+                            imageFuncData = (PIMAGE_THUNK_DATA)RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
                         }
                         else
                         {
-                            imageThunkData = (PIMAGE_THUNK_DATA) RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
-                            imageFuncData = (PIMAGE_THUNK_DATA) RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageThunkData = (PIMAGE_THUNK_DATA)RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
+                            imageFuncData = (PIMAGE_THUNK_DATA)RvaToPointer(imageDelayedImportDescriptor.Value.FirstThunk, baseAddress);
                         }
 
                         for (; imageThunkData.Value.AddressOfData > 0; imageThunkData++, imageFuncData++)
@@ -510,8 +510,8 @@ namespace ManualMapInjection.Injection
                             }
                             else
                             {
-                                var imageImportByName = (PIMAGE_IMPORT_BY_NAME) RvaToPointer(imageFuncData.Value.Ordinal, baseAddress);
-                                var mameOfImport = (PCHAR) imageImportByName.Address + /*imageImportByName->Name*/ 2;
+                                var imageImportByName = (PIMAGE_IMPORT_BY_NAME)RvaToPointer(imageFuncData.Value.Ordinal, baseAddress);
+                                var mameOfImport = (PCHAR)imageImportByName.Address + /*imageImportByName->Name*/ 2;
                                 functionAddress = GetDependencyProcAddressA(moduleBase, mameOfImport);
                             }
 
@@ -547,23 +547,23 @@ namespace ManualMapInjection.Injection
             switch ((data >> 12) & 0xF)
             {
                 case 1: // IMAGE_REL_BASED_HIGH
-                    raw = (PSHORT) (relocationBase + (data & 0xFFF)).Address;
-                    Marshal.WriteInt16(raw.Address, unchecked ((short) (raw.Value + (uint) ((ushort) ((imageBaseDelta >> 16) & 0xffff)))));
+                    raw = (PSHORT)(relocationBase + (data & 0xFFF)).Address;
+                    Marshal.WriteInt16(raw.Address, unchecked((short)(raw.Value + (uint)((ushort)((imageBaseDelta >> 16) & 0xffff)))));
                     break;
 
                 case 2: // IMAGE_REL_BASED_LOW
-                    raw = (PSHORT) (relocationBase + (data & 0xFFF)).Address;
-                    Marshal.WriteInt16(raw.Address, unchecked((short) (raw.Value + (uint) ((ushort) (imageBaseDelta & 0xffff)))));
+                    raw = (PSHORT)(relocationBase + (data & 0xFFF)).Address;
+                    Marshal.WriteInt16(raw.Address, unchecked((short)(raw.Value + (uint)((ushort)(imageBaseDelta & 0xffff)))));
                     break;
 
                 case 3: // IMAGE_REL_BASED_HIGHLOW
-                    raw2 = (PDWORD) (relocationBase + (data & 0xFFF)).Address;
-                    Marshal.WriteInt32(raw2.Address, unchecked((int) (raw2.Value + imageBaseDelta)));
+                    raw2 = (PDWORD)(relocationBase + (data & 0xFFF)).Address;
+                    Marshal.WriteInt32(raw2.Address, unchecked((int)(raw2.Value + imageBaseDelta)));
                     break;
 
                 case 10: // IMAGE_REL_BASED_DIR64
-                    raw2 = (PDWORD) (relocationBase + (data & 0xFFF)).Address;
-                    Marshal.WriteInt32(raw2.Address, unchecked((int) (raw2.Value + imageBaseDelta)));
+                    raw2 = (PDWORD)(relocationBase + (data & 0xFFF)).Address;
+                    Marshal.WriteInt32(raw2.Address, unchecked((int)(raw2.Value + imageBaseDelta)));
                     break;
 
                 case 0: // IMAGE_REL_BASED_ABSOLUTE
@@ -595,29 +595,29 @@ namespace ManualMapInjection.Injection
             }
             else
             {
-                var imageBaseDelta = (uint) (remoteAddress.ToInt32() - imageNtHeaders.Value.OptionalHeader.ImageBase);
+                var imageBaseDelta = (uint)(remoteAddress.ToInt32() - imageNtHeaders.Value.OptionalHeader.ImageBase);
                 var relocationSize = imageNtHeaders.Value.OptionalHeader.BaseRelocationTable.Size;
 
                 if (relocationSize > 0)
                 {
-                    var relocationDirectory = (PIMAGE_BASE_RELOCATION) RvaToPointer(imageNtHeaders.Value.OptionalHeader.BaseRelocationTable.VirtualAddress, baseAddress);
+                    var relocationDirectory = (PIMAGE_BASE_RELOCATION)RvaToPointer(imageNtHeaders.Value.OptionalHeader.BaseRelocationTable.VirtualAddress, baseAddress);
 
                     if (relocationDirectory != null)
                     {
-                        var relocationEnd = (PBYTE) relocationDirectory.Address + (int) relocationSize;
+                        var relocationEnd = (PBYTE)relocationDirectory.Address + (int)relocationSize;
 
                         while (relocationDirectory.Address.ToInt64() < relocationEnd.Address.ToInt64())
                         {
-                            var relocBase = (PBYTE) RvaToPointer(relocationDirectory.Value.VirtualAddress, baseAddress);
+                            var relocBase = (PBYTE)RvaToPointer(relocationDirectory.Value.VirtualAddress, baseAddress);
                             var numRelocs = (relocationDirectory.Value.SizeOfBlock - 8) >> 1;
-                            var relocationData = (PWORD) ((relocationDirectory + 1).Address);
+                            var relocationData = (PWORD)((relocationDirectory + 1).Address);
 
                             for (uint i = 0; i < numRelocs; i++, relocationData++)
                             {
                                 ProcessRelocation(imageBaseDelta, relocationData.Value, relocBase);
                             }
 
-                            relocationDirectory = (PIMAGE_BASE_RELOCATION) relocationData.Address;
+                            relocationDirectory = (PIMAGE_BASE_RELOCATION)relocationData.Address;
                         }
                     }
                     else
@@ -672,8 +672,8 @@ namespace ManualMapInjection.Injection
             uint dwOldProtect;
 
             if (
-                !Imports.WriteProcessMemory(_hProcess, new IntPtr(remoteAddress.ToInt64() + (long) virtualAddress), new IntPtr(baseAddress.ToInt64() + (long) rawData),
-                    new IntPtr((long) rawSize), out lpNumberOfBytesWritten))
+                !Imports.WriteProcessMemory(_hProcess, new IntPtr(remoteAddress.ToInt64() + (long)virtualAddress), new IntPtr(baseAddress.ToInt64() + (long)rawData),
+                    new IntPtr((long)rawSize), out lpNumberOfBytesWritten))
             {
                 return false;
             }
@@ -697,7 +697,7 @@ namespace ManualMapInjection.Injection
 
             // skip PE header
 
-            var imageSectionHeader = (PIMAGE_SECTION_HEADER) (imageNtHeaders.Address + /*OptionalHeader*/ 24 + imageNtHeaders.Value.FileHeader.SizeOfOptionalHeader);
+            var imageSectionHeader = (PIMAGE_SECTION_HEADER)(imageNtHeaders.Address + /*OptionalHeader*/ 24 + imageNtHeaders.Value.FileHeader.SizeOfOptionalHeader);
             for (ushort i = 0; i < imageNtHeaders.Value.FileHeader.NumberOfSections; i++)
             {
                 if (Helpers._stricmp(".reloc".ToCharArray(), imageSectionHeader[i].Name))
@@ -710,7 +710,7 @@ namespace ManualMapInjection.Injection
                 if (characteristics.HasFlag(DataSectionFlags.MemoryRead) || characteristics.HasFlag(DataSectionFlags.MemoryWrite) || characteristics.HasFlag(DataSectionFlags.MemoryExecute))
                 {
                     var protection = GetSectionProtection(imageSectionHeader[i].Characteristics);
-                    ProcessSection(imageSectionHeader[i].Name, baseAddress, remoteAddress, imageSectionHeader[i].PointerToRawData, 
+                    ProcessSection(imageSectionHeader[i].Name, baseAddress, remoteAddress, imageSectionHeader[i].PointerToRawData,
                         imageSectionHeader[i].VirtualAddress, imageSectionHeader[i].SizeOfRawData, imageSectionHeader[i].VirtualSize, protection);
                 }
             }
@@ -720,7 +720,7 @@ namespace ManualMapInjection.Injection
 
         private bool ExecuteRemoteThreadBuffer(byte[] threadData, bool async)
         {
-            var lpAddress = RemoteAllocateMemory((uint) threadData.Length);
+            var lpAddress = RemoteAllocateMemory((uint)threadData.Length);
 
 
             if (lpAddress == IntPtr.Zero)
@@ -741,7 +741,8 @@ namespace ManualMapInjection.Injection
                     {
                         Imports.WaitForSingleObject(hHandle, 5000);
                         Imports.VirtualFreeEx(_hProcess, lpAddress, 0, Imports.FreeType.Release);
-                    }) {IsBackground = true};
+                    })
+                    { IsBackground = true };
                     t.Start();
                 }
                 else
@@ -791,7 +792,7 @@ namespace ManualMapInjection.Injection
                 return true;
             }
 
-            var tlsDirectory = (PIMAGE_TLS_DIRECTORY32) RvaToPointer(imageNtHeaders.Value.OptionalHeader.TLSTable.VirtualAddress, baseAddress);
+            var tlsDirectory = (PIMAGE_TLS_DIRECTORY32)RvaToPointer(imageNtHeaders.Value.OptionalHeader.TLSTable.VirtualAddress, baseAddress);
 
             if (tlsDirectory == null)
             {
@@ -835,7 +836,7 @@ namespace ManualMapInjection.Injection
                 Debug.WriteLine("[LoadImageToMemory] Invalid Image: No IMAGE_NT_HEADERS");
 #endif
                 // Invalid Image: No IMAGE_NT_HEADERS
-                return IntPtr.Zero; 
+                return IntPtr.Zero;
             }
 
             if (imageNtHeaders.Value.FileHeader.NumberOfSections == 0)
@@ -847,9 +848,9 @@ namespace ManualMapInjection.Injection
                 return IntPtr.Zero;
             }
 
-            var rvaLow = unchecked((uint) -1);
+            var rvaLow = unchecked((uint)-1);
             var rvaHigh = 0u;
-            var imageSectionHeader = (PIMAGE_SECTION_HEADER) (imageNtHeaders.Address + /*OptionalHeader*/
+            var imageSectionHeader = (PIMAGE_SECTION_HEADER)(imageNtHeaders.Address + /*OptionalHeader*/
             24 + imageNtHeaders.Value.FileHeader.SizeOfOptionalHeader);
 
             for (uint i = 0; i < imageNtHeaders.Value.FileHeader.NumberOfSections; i++)
@@ -878,7 +879,7 @@ namespace ManualMapInjection.Injection
                 Debug.WriteLine("[LoadImageToMemory] Invalid Image: Not Page Aligned");
 #endif
                 // Invalid Image: Not Page Aligned
-                return IntPtr.Zero; 
+                return IntPtr.Zero;
             }
 
             if (imageNtHeaders.Value.OptionalHeader.DelayImportDescriptor.Size > 0)
@@ -906,7 +907,7 @@ namespace ManualMapInjection.Injection
                 Debug.WriteLine("[LoadImageToMemory] Failed to fix imports");
 #endif
                 // Failed to fix imports
-                return IntPtr.Zero;  
+                return IntPtr.Zero;
             }
 
             if (!ProcessDelayedImportTable(baseAddress, allocatedRemoteMemory))
@@ -947,9 +948,9 @@ namespace ManualMapInjection.Injection
 
             if (imageNtHeaders.Value.OptionalHeader.AddressOfEntryPoint > 0)
             {
-                var dllEntryPoint = allocatedRemoteMemory.ToInt32() + (int) imageNtHeaders.Value.OptionalHeader.AddressOfEntryPoint;
+                var dllEntryPoint = allocatedRemoteMemory.ToInt32() + (int)imageNtHeaders.Value.OptionalHeader.AddressOfEntryPoint;
 
-                if (!CallEntryPoint(allocatedRemoteMemory, (uint) dllEntryPoint, AsyncInjection))
+                if (!CallEntryPoint(allocatedRemoteMemory, (uint)dllEntryPoint, AsyncInjection))
                 {
 #if DEBUG
                     Debug.WriteLine("[LoadImageToMemory] Failed to call entrypoint");
@@ -992,7 +993,7 @@ namespace ManualMapInjection.Injection
                 _hProcess = IntPtr.Zero;
             }
         }
-        
+
         #endregion
 
         #region API

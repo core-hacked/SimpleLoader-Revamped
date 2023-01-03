@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -37,7 +37,7 @@ namespace SimpleLoader_dotNet5_by_core
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
+
             string ProjName = "SimpleLoader .NET5 Port by core"; // Change this to auto update name on both form and the label at the top
             this.Text = ProjName;
             NameLbl.Text = ProjName;
@@ -69,11 +69,11 @@ namespace SimpleLoader_dotNet5_by_core
                     MessageBox.Show("Error: DLL not found");
                     return;
                 }
-                
+
                 //Injection, just leave this alone if you are a beginner
                 var injector = new ManualMapInjector(target) { AsyncInjection = true };
                 InjectVarLbl.Text = $"hmodule = 0x{injector.Inject(file).ToInt64():x8}";
-                
+
                 if (System.IO.File.Exists(mainpath)) //Checking if the DLL exists
                 {
                     System.IO.File.Delete(mainpath); //Deleting the DLL

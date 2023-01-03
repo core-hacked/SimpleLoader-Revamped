@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -23,7 +23,7 @@ namespace ManualMapInjection.Injection
                     break;
                 }
 
-                sb.Append((char) t);
+                sb.Append((char)t);
             }
 
             return sb.ToString();

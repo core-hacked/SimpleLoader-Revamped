@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -519,7 +519,7 @@ namespace ManualMapInjection.Injection.Win32
     [StructLayout(LayoutKind.Explicit)]
     public struct IMAGE_NT_HEADERS32
     {
-        [FieldOffset(0)] [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public char[] Signature;
+        [FieldOffset(0)][MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public char[] Signature;
 
         [FieldOffset(4)] public IMAGE_FILE_HEADER FileHeader;
 
@@ -543,7 +543,7 @@ namespace ManualMapInjection.Injection.Win32
     [StructLayout(LayoutKind.Explicit)]
     public struct IMAGE_NT_HEADERS64
     {
-        [FieldOffset(0)] [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public char[] Signature;
+        [FieldOffset(0)][MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public char[] Signature;
 
         [FieldOffset(4)] public IMAGE_FILE_HEADER FileHeader;
 
@@ -567,7 +567,7 @@ namespace ManualMapInjection.Injection.Win32
     [StructLayout(LayoutKind.Explicit)]
     public struct IMAGE_SECTION_HEADER
     {
-        [FieldOffset(0)] [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)] public char[] Name;
+        [FieldOffset(0)][MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)] public char[] Name;
 
         [FieldOffset(8)] public UInt32 VirtualSize;
 
@@ -621,7 +621,7 @@ namespace ManualMapInjection.Injection.Win32
 
         public int Size
         {
-            get { return (int) Marshal.SizeOf(typeof(PROCESS_BASIC_INFORMATION)); }
+            get { return (int)Marshal.SizeOf(typeof(PROCESS_BASIC_INFORMATION)); }
         }
     }
 
