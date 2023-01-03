@@ -30,7 +30,7 @@ This is a port of WilsonPublic's Github SimpleLoader which was made with .NET Fr
 + Made form movable when dragging panel
 + Added minimize and Close buttons to the panel.
 + Added PictureBox and Text to the Panel.
-+ Ported to .NET 7 WPF from .NET 5 WinForms
++ Ported to .NET 7 from .NET 5.
 ```
 
 ## Dependancies:
