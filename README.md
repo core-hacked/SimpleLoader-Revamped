@@ -1,4 +1,4 @@
-![banner](https://raw.githubusercontent.com/core-hacked/SimpleLoader-Revamped/master-dotnet-5-winforms/banner.png)
+![banner](https://raw.githubusercontent.com/core-hacked/SimpleLoader-Revamped/master-dotnet5-winforms/banner.png)
 
 # [SimpleLoader by Wilson](https://github.com/WilsonPublic/SimpleLoader), [SimpleLoader Revamped by core-hacked](https://github.com/core-hacked/SimpleLoader-Revamped).
 
