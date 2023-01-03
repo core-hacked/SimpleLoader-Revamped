@@ -33,10 +33,8 @@ This is a port of WilsonPublic's Github SimpleLoader which was made with .NET Fr
 
 ## Dependancies:
 
-```
-- .NET 6 SDK
+- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-- Visual Studio Version that supports .NET 6
+- [Visual Studio Version that supports .NET 6](https://visualstudio.microsoft.com/)
 
-- Administrator access on your machine.
-```
+- [Administrator access on your machine.](https://support.microsoft.com/en-us/windows/how-do-i-log-on-as-an-administrator-63267a09-9926-991a-1c77-d203160c8563#:~:text=An%20administrator%20is%20someone%20who,changes%20to%20other%20user%20accounts.)
