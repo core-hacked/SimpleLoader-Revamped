@@ -1,7 +1,7 @@
 ﻿/*
 ///=================================================================================================\\\
 \\\ SimpleLoader by Wilson, https://github.com/WilsonPublic/SimpleLoader [Open Source Cheat Loader] ///
-///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-dotNet5-Port   \\\
+///  Ported and revamped by core-hacked, https://github.com/core-hacked/SimpleLoader-Revamped       \\\
 \\\   Keep in mind this does not have any encryption or protection, It can be cracked by people.    ///
 ///=================================================================================================\\\
 */
@@ -37,12 +37,12 @@ namespace ManualMapInjection.Injection.Types
 
         private static T GetStructure(IntPtr address)
         {
-            return (T) Marshal.PtrToStructure(address, typeof(T));
+            return (T)Marshal.PtrToStructure(address, typeof(T));
         }
 
         public T this[uint index]
         {
-            get { return GetStructure(Address + (int) index * StructSize); }
+            get { return GetStructure(Address + (int)index * StructSize); }
         }
 
         public static ManagedPtr<T> operator +(ManagedPtr<T> c1, int c2)
